@@ -12,7 +12,6 @@ alias gnp="git-notpushed"
 alias gp='git push'
 alias gst='git status'
 alias gt='git status'
-alias g='git status'
 alias ga='git add'
 alias gcl='git clean -x -f'
 alias eg="$EDITOR .git/config"
