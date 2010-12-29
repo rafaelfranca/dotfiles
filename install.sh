@@ -1,5 +1,6 @@
 #!/bin/bash
 
-for found in ~/.dotfiles/dotfiles/*; do
-  ln -fs $found ~/.$found
+for i in ~/.dotfiles/dotfiles/*; do
+  rm -f ~/.$(basename $i)
+  ln -s $i ~/.$(basename $i)
 done
