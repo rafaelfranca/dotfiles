@@ -15,4 +15,4 @@ GIT_PS1_SHOWDIRTYSTATE="true" #show if there's unstaged changes
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
-PS1='$(rvm-prompt u) [\[\033[1;34m\]\u \[\033[0m\]\W$(__git_ps1 " \[\033[1;34m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
+PS1='$(rvm-prompt u) [\[\033[1;34m\]\u \[\033[0m\]\W$(__git_ps1 " \[\033[1;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
