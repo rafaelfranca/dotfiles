@@ -1,7 +1,15 @@
-for i in "~/.dotfiles/aliases/*.sh"; do source $i ; done
-for i in "~/.dotfiles/functions/*.sh"; do source $i ; done
+for i in ~/.dotfiles/aliases/*.sh; do source $i ; done
+for i in ~/.dotfiles/functions/*.sh; do source $i ; done
 
 export HISTSIZE=100000
 export HISTCONTROL="ignoreboth:erasedups"
 
-cdpath=(~ ~/Projetos)
+CDPATH=".:~:~/Projetos"
+
+# Git.sh config
+GIT_PS1_SHOWDIRTYSTATE="true" #show if there's unstaged changes
+
+# RVM
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+
+PS1='$(rvm-prompt u) [\[\033[1;34m\]\u \[\033[0m\]\W$(__git_ps1 " \[\033[1;34m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
