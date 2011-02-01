@@ -32,4 +32,6 @@
     File.open(%(%A), %(w)) {|f| f.write(b)}\n\
     exit 1 if b.include?(%(<)*%L)'"
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
+[format]
+  pretty = %an - %C(green)%ai%C(reset) - %C(yellow)%s%Creset

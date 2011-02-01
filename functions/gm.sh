@@ -1,4 +1,3 @@
 function gm() {
-  git fetch
-  git rebase origin/$1
+  git fetch && git rebase origin/$1
 }
