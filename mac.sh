@@ -3,7 +3,7 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-EDITOR="mvim -p"
+EDITOR="vim -p"
 export EDITOR="$EDITOR"
 
 alias vi="$EDITOR"
