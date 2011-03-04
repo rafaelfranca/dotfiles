@@ -4,5 +4,5 @@
 XX106-5TY6
 *.swp
 *~
-.rvmrc
 #*#
+vendor/ruby
