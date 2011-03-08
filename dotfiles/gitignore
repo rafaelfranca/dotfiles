@@ -6,3 +6,5 @@ XX106-5TY6
 *~
 #*#
 vendor/ruby
+vendor/rbx
+.bundle
