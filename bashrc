@@ -12,6 +12,9 @@ if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
 # Git.sh config
 GIT_PS1_SHOWDIRTYSTATE="true" #show if there's unstaged changes
 
+# Locale Configuration
+export LC_ALL="en_US.UTF-8"
+
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
