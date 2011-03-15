@@ -5,6 +5,7 @@ export HISTSIZE=100000
 export HISTCONTROL="ignoreboth:erasedups"
 
 CDPATH=".:~:~/Projects"
+PATH="~/Scripts:$PATH"
 
 # Load Mac-specific configurations
 if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
@@ -14,6 +15,9 @@ GIT_PS1_SHOWDIRTYSTATE="true" #show if there's unstaged changes
 
 # Locale Configuration
 export LC_ALL="en_US.UTF-8"
+
+# Colors
+export LSCOLORS="exfxbxdxcxegedabagacab"
 
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
