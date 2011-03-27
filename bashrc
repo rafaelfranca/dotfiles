@@ -5,7 +5,7 @@ export HISTSIZE=100000
 export HISTCONTROL="ignoreboth:erasedups"
 
 CDPATH=".:~:~/Projects"
-PATH="~/Scripts:$PATH"
+PATH="/usr/local/bin:$PATH:/usr/local/sbin:~/Scripts"
 
 # Load Mac-specific configurations
 if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
