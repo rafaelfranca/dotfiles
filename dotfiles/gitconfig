@@ -35,3 +35,5 @@
   whitespace = nowarn
 [format]
   pretty = %an - %C(green)%ai%C(reset) - %C(yellow)%s%Creset
+[help]
+  autocorrect = -1
