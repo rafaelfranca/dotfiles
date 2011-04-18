@@ -11,5 +11,5 @@ alias vim="$EDITOR"
 alias vimdiff="mvimdiff -v"
 
 alias ls="ls -G"
-alias gg="launch gitx"
+alias gg="open -a gitx"
 alias c="clear"
