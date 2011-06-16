@@ -8,3 +8,7 @@ XX106-5TY6
 vendor/ruby
 vendor/rbx
 .bundle
+doc/tags*
+.todo
+Session.vim
+*.orig
