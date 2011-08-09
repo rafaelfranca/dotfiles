@@ -24,8 +24,10 @@
 [apply]
   whitespace = nowarn
 [format]
-  pretty = %an - %C(green)%ai%C(reset) - %C(yellow)%s%Creset
+  pretty = %h - %C(green)%ad%C(reset) - %C(yellow)%s%Creset - %an
 [branch]
   autosetuprebase = always
 [help]
   autocorrect = -1
+[log]
+  date = local
