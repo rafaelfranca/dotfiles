@@ -19,7 +19,8 @@ export LC_ALL="en_US.UTF-8"
 # Colors
 export LSCOLORS="exfxbxdxcxegedabagacab"
 
-# RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+#rbenv
+PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+source "$HOME/.rbenv/completions/rbenv.bash"
 
-PS1='$(rvm-prompt u) [\[\033[1;34m\]\u \[\033[0m\]\W$(__git_ps1 " \[\033[1;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
+PS1='$(rbenv version-name) [\[\033[1;34m\]\u \[\033[0m\]\W$(__git_ps1 " \[\033[1;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
