@@ -12,3 +12,5 @@ doc/tags*
 .todo
 Session.vim
 *.orig
+b/
+.rbenv-version
