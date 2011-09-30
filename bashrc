@@ -21,6 +21,6 @@ export LSCOLORS="exfxbxdxcxegedabagacab"
 
 #rbenv
 PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
-source "$HOME/.rbenv/completions/rbenv.bash"
+source "/usr/local/Cellar/rbenv/0.2.0/completions/rbenv.bash"
 
 PS1='$(rbenv version-name) [\[\033[1;34m\]\u \[\033[0m\]\W$(__git_ps1 " \[\033[1;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
