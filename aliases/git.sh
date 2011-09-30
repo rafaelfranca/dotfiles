@@ -21,3 +21,4 @@ alias gsp='git stash pop'
 alias gcp='git cherry-pick'
 alias gm='git merge'
 alias grb='git rebase'
+alias gf="git fetch"
