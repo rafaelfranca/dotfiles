@@ -1,2 +1,4 @@
 --type-add
 ruby=haml,rabl
+--ignore-dir=vendor/ruby
+--ignore-dir=tmp
