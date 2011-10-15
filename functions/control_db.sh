@@ -10,8 +10,14 @@ function control_db ()
   "mysql")
     launch_agent=~/Library/LaunchAgents/com.mysql.mysqld.plist
     ;;
-  "mongo")
+  "postgresql")
     launch_agent=~/Library/LaunchAgents/org.postgresql.postgres.plist
+    ;;
+  "redis")
+    launch_agent=~/Library/LaunchAgents/io.redis.redis-server.plist
+    ;;
+  "memcached")
+    launch_agent=~/Library/LaunchAgents/com.danga.memcached.plist
     ;;
   * )
     echo "Unknown database"
