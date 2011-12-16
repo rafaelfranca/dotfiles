@@ -1,4 +1,6 @@
 --type-add
 ruby=haml,rabl
+--type-add
+css=scss,sass
 --ignore-dir=vendor/ruby
 --ignore-dir=tmp
