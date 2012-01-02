@@ -8,6 +8,7 @@
   status = auto
   branch = auto
   interactive = auto
+  grep = always
 [alias]
   amend = commit --amend
   squash = rebase --interactive
@@ -31,3 +32,5 @@
   autocorrect = -1
 [log]
   date = local
+[grep]
+  lineNumber = true
