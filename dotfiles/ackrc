@@ -3,4 +3,5 @@ ruby=haml,rabl
 --type-add
 css=scss,sass
 --ignore-dir=vendor/ruby
---ignore-dir=tmp
+--ignore-dir=tmp/
+--ignore-dir=log/
