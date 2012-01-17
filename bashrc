@@ -23,4 +23,7 @@ export LSCOLORS="exfxbxdxcxegedabagacab"
 eval "$(rbenv init -)"
 PATH="./b:$PATH"
 
+#hub
+alias git=hub
+
 PS1='[\[\033[0;34m\]$(rbenv version-name) \[\033[0m\]\W$(__git_ps1 " \[\033[0;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
