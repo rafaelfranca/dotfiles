@@ -21,7 +21,6 @@ export LSCOLORS="exfxbxdxcxegedabagacab"
 
 #rbenv
 eval "$(rbenv init -)"
-PATH="./b:$PATH"
 
 #hub
 alias git=hub
