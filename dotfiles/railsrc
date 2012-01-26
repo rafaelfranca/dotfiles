@@ -1,8 +1,1 @@
-def sql(query)
-  ActiveRecord::Base.connection.select_all(query)
-end
-
-projectrc = File.expand_path('config/.projectrc')
-if File.exist?(projectrc)
-  load projectrc
-end
+--skip-bundle
