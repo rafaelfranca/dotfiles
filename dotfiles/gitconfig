@@ -10,14 +10,38 @@
   interactive = auto
   grep = always
 [alias]
-  amend = commit --amend
-  squash = rebase --interactive
-  unadd = reset HEAD
+  a = add
+  b = branch
+  ba = branch -a
+  c = commit -v
+  ca = commit -v -a
+  cam = commit --amend
   co = checkout
-  aa = add -A
-  st = status
-  ps = push
+  cp = cherry-pick
+  d = diff
+  dc = diff --cached
+  dm = diff master
+  f = fetch
+  fix = commit --amend -C HEAD
+  l = log --graph
+  m = merge --no-ff
+  mf = merge --ff-only
+  p = push
   pl = pull
+  pr = pull-request
+  r = reset
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase --ignore
+  rh = reset --hard
+  rmb = !sh -c 'git branch -d $1 && git push origin :$1' -
+  s = status -s
+  sa = stash apply
+  sp = stash pop
+  sq = rebase --interactive origin/master
+  ss = stash
+  un = reset HEAD
 [push]
   default = current
 [merge]
