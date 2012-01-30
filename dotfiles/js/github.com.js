@@ -1,11 +1,19 @@
 // Need http://defunkt.io/dotjs/ to work
 
 (function() {
-  var $button = $('<a><span>Delete all notifications</span></a>').addClass('minibutton').
-    attr('href', 'javascript:$("#inbox").find(".del a").click()').
+  var $inbox = $("#inbox");
+
+  var $button = $('<a><span>Delete all</span></a>').
+    addClass('minibutton').
+    attr('href', 'javascript:;').
     css('margin-left', '10px').
-    css('float', 'right');
+    css('float', 'right').
+    on('click', function() {
+      $('.del', $inbox).find('a').click();
+      $inbox.ajaxStop(function() {
+        location.reload(true);
+      });
+    });
 
-  $('#inbox').find('.list').children('p').append($button);
+  $('.list', $inbox).children('p').append($button);
 })();
-
