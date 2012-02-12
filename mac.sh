@@ -1,6 +1,6 @@
 # Bash Completion (install bash-completion with homebrew to enable it
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+if [ -f /usr/local/etc/bash_completion ]; then
+  . /usr/local/etc/bash_completion
 fi
 
 EDITOR="mvim -v"
