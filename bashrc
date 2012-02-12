@@ -1,6 +1,3 @@
-for i in ~/.dotfiles/aliases/*.sh; do source $i ; done
-for i in ~/.dotfiles/functions/*.sh; do source $i ; done
-
 export HISTSIZE=100000
 export HISTCONTROL="ignoreboth:erasedups"
 
@@ -24,6 +21,9 @@ eval "$(rbenv init -)"
 
 #hub
 alias git=hub
+
+# Aliases and functions
+for i in ~/.dotfiles/{aliases,functions}/*.sh ; do . $i ; done
 
 PS1='[\[\033[0;34m\]$(rbenv version-name) \[\033[0m\]\W$(__git_ps1 " \[\033[0;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
 
