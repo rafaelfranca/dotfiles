@@ -14,5 +14,9 @@ function devmode ()
   echo
 
   echo "Welcome to the dev mode. Now you are a super star and can create amazing things!"
-  export PATH="./b:$PATH"
+
+  if [[ ! $PATH =~ .*\./b.* ]]
+  then
+    export PATH="./b:$PATH"
+  fi
 }
