@@ -14,7 +14,7 @@ function control_db ()
     launch_agent=~/Library/LaunchAgents/org.postgresql.postgres.plist
     ;;
   "redis")
-    launch_agent=~/Library/LaunchAgents/io.redis.redis-server.plist
+    launch_agent=~/Library/LaunchAgents/homebrew.mxcl.redis.plist
     ;;
   "memcached")
     launch_agent=~/Library/LaunchAgents/com.danga.memcached.plist
