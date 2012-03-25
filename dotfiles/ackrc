@@ -1,6 +1,8 @@
 --type-add
 ruby=haml,rabl
 --type-add
+js=json,tmpl,jst,ejs
+--type-add
 css=scss,sass
 --type-set
 elixir=ex,exs
