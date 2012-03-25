@@ -5,13 +5,13 @@ function control_db ()
 
   case "$type" in
   "mongo")
-    launch_agent=~/Library/LaunchAgents/org.mongodb.mongod.plist
+    launch_agent=~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
     ;;
   "mysql")
-    launch_agent=~/Library/LaunchAgents/com.mysql.mysqld.plist
+    launch_agent=~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
     ;;
   "postgresql")
-    launch_agent=~/Library/LaunchAgents/org.postgresql.postgres.plist
+    launch_agent=~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
     ;;
   "redis")
     launch_agent=~/Library/LaunchAgents/homebrew.mxcl.redis.plist
