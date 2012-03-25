@@ -11,6 +11,7 @@ alias gcp='git cp'
 alias gd='git d'
 alias gdc='git dc'
 alias gdm='git dm'
+alias gdw='git dw'
 alias gf="git f"
 alias gfix="git fix"
 alias gl='git l'

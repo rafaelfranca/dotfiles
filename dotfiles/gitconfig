@@ -21,6 +21,7 @@
   d = diff
   dc = diff --cached
   dm = diff master
+  dw = diff --word-diff=color
   f = fetch
   fix = commit --amend -C HEAD
   l = log --graph
