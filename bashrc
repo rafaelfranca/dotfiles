@@ -3,6 +3,7 @@ export HISTCONTROL="ignoreboth:erasedups"
 
 CDPATH=".:~:~/Projects"
 PATH="$HOME/.rbenv/bin:/usr/local/bin:$PATH:/usr/local/sbin:~/Scripts"
+PATH="$HOME/Projects/github/elixir/bin:$PATH"
 
 # Load Mac-specific configurations
 if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
