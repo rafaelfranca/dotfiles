@@ -25,7 +25,7 @@
   f = fetch
   fix = commit --amend -C HEAD
   l = log --graph
-  m = merge --no-ff
+  m = merge --no-ff --no-edit
   mf = merge --ff-only
   p = push
   pl = pull
