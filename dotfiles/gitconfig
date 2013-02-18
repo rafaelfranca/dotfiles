@@ -2,7 +2,7 @@
   name = Rafael Mendonça França
   email = rafael.franca@plataformatec.com.br
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = /opt/boxen/config/git/gitignore
 [color]
   diff = auto
   status = auto
@@ -59,3 +59,7 @@
   date = local
 [grep]
   lineNumber = true
+[hub]
+  protocol = https
+[credential]
+  helper = /opt/boxen/bin/boxen-git-credential
