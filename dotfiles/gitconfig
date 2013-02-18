@@ -28,6 +28,7 @@
   m = merge --no-ff --no-edit
   mf = merge --ff-only
   p = push
+  pu = push -u
   pl = pull
   pr = pull-request
   r = reset
