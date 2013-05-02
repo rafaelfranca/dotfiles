@@ -11,3 +11,4 @@ markdown=md,markdown
 --ignore-dir=vendor/ruby
 --ignore-dir=tmp/
 --ignore-dir=log/
+--ignore-dir=reports/
