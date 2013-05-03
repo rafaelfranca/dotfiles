@@ -2,7 +2,7 @@
   name = Rafael Mendonça França
   email = rafael.franca@plataformatec.com.br
 [core]
-  excludesfile = /opt/boxen/config/git/gitignore
+  excludesfile = /Users/rafaelmfranca/.gitignore
 [color]
   diff = auto
   status = auto

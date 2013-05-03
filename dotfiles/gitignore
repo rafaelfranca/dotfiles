@@ -1,0 +1,14 @@
+.DS\_Store
+.svn
+*.sqlite3
+XX106-5TY6
+*.swp
+*~
+#*#
+vendor/ruby
+vendor/rbx
+.bundle
+doc/tags*
+.todo
+Session.vim
+*.orig
