@@ -60,9 +60,6 @@
   date = local
 [grep]
   lineNumber = true
-[github]
-  user = rafaelfranca
-  password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [hub]
   protocol = https
 
