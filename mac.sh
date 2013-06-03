@@ -5,9 +5,6 @@ fi
 
 EDITOR="mvim -v"
 export EDITOR="$EDITOR"
-export REDIS_URL="$BOXEN_REDIS_URL"
-export REDIS_PORT="$BOXEN_REDIS_PORT"
-export MONGODB_PORT="$BOXEN_MONGODB_PORT"
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
