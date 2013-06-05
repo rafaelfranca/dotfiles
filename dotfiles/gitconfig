@@ -65,3 +65,5 @@
 
 [credential]
 helper = /opt/boxen/bin/boxen-git-credential
+[mergetool]
+	keepBackup = false
