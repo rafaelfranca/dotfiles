@@ -2,7 +2,7 @@
 
 function ss() {
   if [[ -a script/server ]]; then
-    ruby script/server $*
+    script/server $*
   elif [[ -a script/rails ]]; then
     bundle exec rails server $*
   else
