@@ -25,7 +25,7 @@
   f = fetch
   fix = commit --amend -C HEAD
   l = log --graph
-  m = merge --no-ff --no-edit
+  m = merge --no-edit
   mf = merge --ff-only
   p = push
   pu = push -u
@@ -48,6 +48,7 @@
   default = current
 [merge]
   tool = vimdiff
+  ff = false
 [apply]
   whitespace = nowarn
 [format]
