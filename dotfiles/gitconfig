@@ -68,3 +68,9 @@
 helper = /opt/boxen/bin/boxen-git-credential
 [mergetool]
 	keepBackup = false
+
+[pull]
+rebase = true
+
+[gh]
+protocol = https
