@@ -1,2 +1,2 @@
-alias rtest='ruby -Ilib:test'
-alias artest='ARCONN=sqlite3_mem ruby -Ilib:test'
+alias rtest='ruby -Ilib:test -w'
+alias artest='ARCONN=sqlite3_mem ruby -Ilib:test -w'
