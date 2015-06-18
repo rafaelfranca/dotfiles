@@ -1,6 +1,6 @@
 [user]
   name = Rafael Mendonça França
-  email = rafael.franca@plataformatec.com.br
+	email = rafaelmfranca@gmail.com
 [core]
   excludesfile = ~/.gitignore
 [color]
