@@ -16,6 +16,10 @@ for i in ~/.dotfiles/{aliases,functions}/*.sh ; do . $i ; done
 
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
+EDITOR="vim"
+export EDITOR="$EDITOR"
+alias vi="$EDITOR"
+
 # Load Mac-specific configurations
 if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
 
