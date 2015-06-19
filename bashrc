@@ -19,7 +19,7 @@ for i in ~/.dotfiles/{aliases,functions}/*.sh ; do . $i ; done
 if [ $(uname) = "Darwin" ]; then
   . ~/.dotfiles/mac.sh
 elif [ $(uname) = "Linux" ]; then
-  . ~/.dotfiles/linux
+  . ~/.dotfiles/linux.sh
 fi
 
 # Git.sh config
