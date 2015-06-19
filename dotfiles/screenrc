@@ -1,6 +1,0 @@
-vbell off
-startup_message off
-
-defscrollback 999999
-
-screen -t irc 0 irssi
