@@ -1,6 +1,6 @@
 [user]
   name = Rafael Mendonça França
-	email = rafaelmfranca@gmail.com
+  email = rafaelmfranca@gmail.com
 [core]
   excludesfile = ~/.gitignore
 [color]
@@ -65,9 +65,9 @@
   protocol = https
 
 [credential]
-helper = /opt/boxen/bin/boxen-git-credential
+  helper = /opt/boxen/bin/boxen-git-credential
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 
 [pull]
 rebase = true
