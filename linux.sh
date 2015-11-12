@@ -16,3 +16,5 @@ alias vi="$EDITOR"
 alias ls="ls -G"
 alias c="clear"
 alias ack="ack-grep"
+
+export SKIP_BOOTSTRAP=1
