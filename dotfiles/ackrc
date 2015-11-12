@@ -5,6 +5,8 @@ js=json,tmpl,jst,ejs
 --type-add
 css=scss,sass
 --type-set
+coffeescript=.coffee
+--type-set
 elixir=ex,exs
 --type-set
 markdown=md,markdown
