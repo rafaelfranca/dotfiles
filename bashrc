@@ -1,9 +1,7 @@
 export HISTSIZE=100000
 export HISTCONTROL="ignoreboth:erasedups"
 
-CDPATH=".:~:~/Projects"
-PATH="$PATH:~/Scripts"
-PATH="$HOME/Projects/github/elixir/bin:$PATH"
+CDPATH=".:~:~/src"
 
 # Locale Configuration
 export LC_ALL="en_US.UTF-8"
