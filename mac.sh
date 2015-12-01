@@ -12,6 +12,8 @@ alias vi="$EDITOR"
 alias vim="$EDITOR"
 alias vimdiff="mvimdiff -v"
 
+alias git=hub
+
 alias ls="ls -G"
 alias gg="open -a gitx"
 alias c="clear"
