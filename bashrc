@@ -12,8 +12,6 @@ export LSCOLORS="exfxbxdxcxegedabagacab"
 # Aliases and functions
 for i in ~/.dotfiles/{aliases,functions}/*.sh ; do . $i ; done
 
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
 if [ $(uname) = "Darwin" ]; then
   . ~/.dotfiles/mac.sh
 elif [ $(uname) = "Linux" ]; then
