@@ -3,6 +3,8 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
+eval "$(rbenv init -)"
+
 EDITOR="mvim -v"
 export EDITOR="$EDITOR"
 
