@@ -62,7 +62,7 @@
 [grep]
   lineNumber = true
 [hub]
-  protocol = https
+  protocol = git
 
 
 [credential]
@@ -73,6 +73,3 @@
 
 [pull]
 rebase = true
-
-[gh]
-protocol = https
