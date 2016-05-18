@@ -44,6 +44,7 @@
   sq = rebase --interactive origin/master
   ss = stash
   un = reset HEAD
+  up = rebase origin/master
 [push]
   default = current
 [merge]
