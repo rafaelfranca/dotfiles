@@ -17,3 +17,4 @@ alias git=hub
 alias ls="ls -G"
 alias gg="open -a gitx"
 alias c="clear"
+export SKIP_BOOTSTRAP=1
