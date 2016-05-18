@@ -77,3 +77,7 @@ rebase = true
 	gpgsign = true
 [gpg]
 	program = gpg2
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
