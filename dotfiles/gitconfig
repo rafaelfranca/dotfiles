@@ -1,6 +1,6 @@
 [user]
   name = Rafael Mendonça França
-  email = rafaelmfranca@gmail.com
+	useConfigOnly = true
 [core]
   excludesfile = ~/.gitignore
 [color]
