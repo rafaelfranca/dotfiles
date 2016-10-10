@@ -27,6 +27,7 @@
   l = log --graph
   m = merge --no-edit
   mf = merge --ff-only
+  mt = mergetool
   p = push
   pu = push -u
   pl = pull
