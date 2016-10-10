@@ -1,3 +1,5 @@
 source ~/.dotfiles/bashrc
 
 if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
