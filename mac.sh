@@ -18,3 +18,4 @@ alias ls="ls -G"
 alias gg="open -a gitx"
 alias c="clear"
 export SKIP_BOOTSTRAP=1
+export IM_ALREADY_PRO_THANKS=1
