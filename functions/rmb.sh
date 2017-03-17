@@ -28,8 +28,11 @@ function rmb () {
     read -p "Continue? (y/n): " -n 1 choice
     echo
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-      # Remove remote branches
-      git push origin `git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$" | sed 's/origin\//:/g' | tr -d '\n'`
+      if [ "$1" == "--remote" ] || [ "$1" == "-r" ]; then
+        # Remove remote branches
+        git push origin `git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$" | sed 's/origin\//:/g' | tr -d '\n'`
+      fi
+
       # Remove local branches
       git branch -d `git branch --merged | grep -v 'master$' | grep -v "$current_branch$" | sed 's/origin\///g' | tr -d '\n'`
     else
