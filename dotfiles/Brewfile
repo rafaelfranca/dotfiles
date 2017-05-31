@@ -14,7 +14,6 @@ brew 'heroku'
 brew 'htop'
 brew 'hub'
 brew 'joshuaclayton/formulae/unused'
-brew 'macvim'
 brew 'memcached', service_restart: true
 brew 'mysql', service_restart: true
 brew 'node'
@@ -25,6 +24,7 @@ brew 'readline'
 brew 'redis', service_restart: true
 brew 'ruby-build'
 brew 'the_silver_searcher'
+brew 'vim'
 brew 'youtube-dl'
 cask '1password'
 cask 'adium'

@@ -5,12 +5,10 @@ fi
 
 eval "$(rbenv init -)"
 
-EDITOR="mvim -v"
+EDITOR="vim"
 export EDITOR="$EDITOR"
 
 alias vi="$EDITOR"
-alias vim="$EDITOR"
-alias vimdiff="mvimdiff -v"
 
 alias git=hub
 
