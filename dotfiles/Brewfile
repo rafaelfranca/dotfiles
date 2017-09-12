@@ -23,7 +23,7 @@ brew 'rbenv'
 brew 'readline'
 brew 'redis', service_restart: true
 brew 'ruby-build'
-brew 'the_silver_searcher'
+brew 'ripgrep'
 brew 'vim'
 brew 'youtube-dl'
 cask '1password'
