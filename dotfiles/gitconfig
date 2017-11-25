@@ -31,7 +31,6 @@
   p = push
   pu = push -u
   pl = pull
-  pr = pull-request
   r = reset
   rb = rebase
   rba = rebase --abort
