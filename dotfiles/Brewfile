@@ -62,3 +62,6 @@ cask 'tuxera-ntfs'
 cask 'viscosity'
 cask 'vlc'
 cask 'xld'
+mas 'Spark', id: 1176895641
+mas 'Todoist', id: 585829637
+mas 'Tweetbot for Twitter', id: 557168941
