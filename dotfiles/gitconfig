@@ -1,79 +1,75 @@
 [user]
-  name = Rafael Mendonça França
+	name = Rafael Mendonça França
 	useConfigOnly = true
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
 [color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-  grep = always
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	grep = always
 [alias]
-  a = add
-  b = branch
-  ba = branch -a
-  c = commit -v
-  ca = commit -v -a
-  cam = commit --amend
-  co = checkout
-  cp = cherry-pick
-  d = diff
-  dc = diff --cached
-  dm = diff master
-  dw = diff --word-diff=color
-  f = fetch
-  fix = commit --amend -C HEAD
-  l = log --graph
-  m = merge --no-edit
-  mf = merge --ff-only
-  mt = mergetool
-  p = push
-  pu = push -u
-  pl = pull
-  r = reset
-  rb = rebase
-  rba = rebase --abort
-  rbc = rebase --continue
-  rbi = rebase --ignore
-  rh = reset --hard
-  rmb = !sh -c 'git branch -d $1 && git push origin :$1' -
-  s = status -s
-  sa = stash apply
-  sp = stash pop
-  sq = rebase --interactive origin/master
-  ss = stash
-  un = reset HEAD
-  up = rebase origin/master
+	a = add
+	b = branch
+	ba = branch -a
+	c = commit -v
+	ca = commit -v -a
+	cam = commit --amend
+	co = checkout
+	cp = cherry-pick
+	d = diff
+	dc = diff --cached
+	dm = diff master
+	dw = diff --word-diff=color
+	f = fetch
+	fix = commit --amend -C HEAD
+	l = log --graph
+	m = merge --no-edit
+	mf = merge --ff-only
+	mt = mergetool
+	p = push
+	pu = push -u
+	pl = pull
+	r = reset
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --ignore
+	rh = reset --hard
+	rmb = !sh -c 'git branch -d $1 && git push origin :$1' -
+	s = status -s
+	sa = stash apply
+	sp = stash pop
+	sq = rebase --interactive origin/master
+	ss = stash
+	un = reset HEAD
+	up = rebase origin/master
 [push]
-  default = current
+	default = current
 [merge]
-  tool = vimdiff
-  ff = false
+	tool = vimdiff
+	ff = false
 [apply]
-  whitespace = nowarn
+	whitespace = nowarn
 [format]
-  pretty = %C(yellow)%h%Cblue%d%Creset %s %C(green) %an, %ar%Creset
+	pretty = %C(yellow)%h%Cblue%d%Creset %s %C(green) %an, %ar%Creset
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 [help]
-  autocorrect = -1
+	autocorrect = -1
 [log]
-  date = local
+	date = local
 [grep]
-  lineNumber = true
+	lineNumber = true
 [hub]
-  protocol = git
-
-
+	protocol = git
 [credential]
 	helper = osxkeychain
-
 [mergetool]
-  keepBackup = false
-
+	keepBackup = false
 [pull]
-rebase = true
+	rebase = true
 [commit]
 	gpgsign = true
 [gpg]
