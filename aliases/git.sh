@@ -15,7 +15,6 @@ alias gdw='git dw'
 alias gf="git f"
 alias gfix="git fix"
 alias gl='git l'
-alias gm='git m'
 alias gmf='git mf'
 alias gmt='git mt'
 alias gp='git p'
