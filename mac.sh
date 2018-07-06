@@ -18,3 +18,5 @@ alias c="clear"
 export SKIP_BOOTSTRAP=1
 export IM_ALREADY_PRO_THANKS=1
 export DEV_ALLOW_RBENV=1
+
+export PS1='[\[\033[0;34m\]${RUBY_VERSION:-$(rbenv version-name)} \[\033[0m\]\W$(__git_ps1 " \[\033[0;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '

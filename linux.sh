@@ -17,4 +17,4 @@ alias ls="ls -G"
 alias c="clear"
 alias ack="ack-grep"
 
-export SKIP_BOOTSTRAP=1
+export PS1='[\[\033[0m\]\W$(__git_ps1 " \[\033[0;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '

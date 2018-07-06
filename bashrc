@@ -21,8 +21,6 @@ fi
 # Git.sh config
 GIT_PS1_SHOWDIRTYSTATE="true" #show if there's unstaged changes
 
-PS1='[\[\033[0;34m\]${RUBY_VERSION:-$(rbenv version-name)} \[\033[0m\]\W$(__git_ps1 " \[\033[0;32m\](%s)\[\033[0m\]")]\$\[\033[0m\] '
-
 # Bash4 niceties
 shopt -s globstar autocd
 
