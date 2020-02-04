@@ -1,61 +1,66 @@
-tap 'homebrew/cask'
-tap 'homebrew/bundle'
-tap 'homebrew/core'
-tap 'homebrew/services'
-brew 'awscli'
-brew 'bash'
-brew 'bash-completion'
-brew 'ctags'
-brew 'fzf'
-brew 'git'
-brew 'heroku'
-brew 'htop'
-brew 'hub'
-brew 'memcached', service_restart: true
-brew 'mysql', service_restart: true
-brew 'node'
-brew 'pass'
-brew 'postgresql', service_restart: true
-brew 'rbenv'
-brew 'readline'
-brew 'redis', service_restart: true
-brew 'ripgrep'
-brew 'ruby-build'
-brew 'vim'
-brew 'youtube-dl'
-cask '1password'
-cask 'adobe-acrobat-reader'
-cask 'alfred'
-cask 'authy'
-cask 'bartender'
-cask 'basecamp'
-cask 'caffeine'
-cask 'dash'
-cask 'divvy'
-cask 'dropbox'
-cask 'firefox'
-cask 'flux'
-cask 'gitter'
-cask 'google-backup-and-sync'
-cask 'google-chrome'
-cask 'gpg-suite'
-cask 'imageoptim'
-cask 'iterm2'
-cask 'keybase'
-cask 'kindle'
-cask 'lastfm'
-cask 'licecap'
-cask 'mdrp'
-cask 'omnidisksweeper'
-cask 'omnigraffle'
-cask 'skype'
-cask 'slack'
-cask 'steam'
-cask 'telegram'
-cask 'transmission'
-cask 'tuxera-ntfs'
-cask 'viscosity'
-cask 'vlc'
-cask 'xld'
-mas 'Things', id: 904280696
-mas 'Tweetbot for Twitter', id: 557168941
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "homebrew/services"
+brew "readline", link: true
+brew "ansible"
+brew "ansible-lint"
+brew "bash"
+brew "bash-completion"
+brew "ctags"
+brew "fzf"
+brew "htop"
+brew "hub"
+brew "mas"
+brew "memcached", restart_service: true
+brew "mysql", restart_service: true, link: false
+brew "node"
+brew "postgresql", restart_service: true
+brew "ruby-build"
+brew "rbenv"
+brew "reattach-to-user-namespace"
+brew "redis", restart_service: true
+brew "ripgrep"
+brew "tmux"
+brew "vim"
+brew "youtube-dl"
+cask "1password"
+cask "adobe-acrobat-reader"
+cask "alfred"
+cask "authy"
+cask "bartender"
+cask "basecamp"
+cask "caffeine"
+cask "dash"
+cask "divvy"
+cask "docker"
+cask "dropbox"
+cask "firefox"
+cask "gitter"
+cask "google-backup-and-sync"
+cask "google-chrome"
+cask "gpg-suite"
+cask "imageoptim"
+cask "iterm2"
+cask "kindle"
+cask "lastfm"
+cask "licecap"
+cask "mdrp"
+cask "netnewswire"
+cask "omnidisksweeper"
+cask "omnigraffle"
+cask "plex"
+cask "skype"
+cask "slack"
+cask "steam"
+cask "telegram"
+cask "transmission"
+cask "tuxera-ntfs"
+cask "viscosity"
+cask "vlc"
+cask "xld"
+cask "xmind"
+mas "Be Focused Pro", id: 961632517
+mas "Drafts", id: 1435957248
+mas "Things", id: 904280696
+mas "Tweetbot", id: 557168941
