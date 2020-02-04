@@ -11,3 +11,4 @@ doc/tags*
 .todo
 Session.vim
 *.orig
+.idea
