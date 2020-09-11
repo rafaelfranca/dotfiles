@@ -3,6 +3,7 @@
 	useConfigOnly = true
 [core]
 	excludesfile = ~/.gitignore
+	commitGraph = true
 [color]
 	diff = auto
 	status = auto
@@ -97,3 +98,5 @@
 	algorithm = patience
 [protocol]
 	version = 2
+[gc]
+	writeCommitGraph = true
