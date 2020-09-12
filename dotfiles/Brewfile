@@ -61,6 +61,9 @@ cask "viscosity"
 cask "vlc"
 cask "xld"
 cask "xmind"
+cask "timing"
+cask "hey"
+cask "visual-studio-code"
 mas "Be Focused Pro", id: 961632517
 mas "Drafts", id: 1435957248
 mas "Things", id: 904280696
