@@ -49,8 +49,9 @@
 [push]
 	default = current
 [merge]
-	tool = vimdiff
+	tool = code
 	ff = false
+	conflictstyle = merge
 [apply]
 	whitespace = nowarn
 [format]
@@ -69,6 +70,7 @@
 	helper = osxkeychain
 [mergetool]
 	keepBackup = false
+	keepTemporaries = false
 [pull]
 	rebase = true
 [commit]
@@ -100,3 +102,6 @@
 	version = 2
 [gc]
 	writeCommitGraph = true
+[mergetool "code"]
+	cmd = code $MERGED
+	trustExitCode = true
