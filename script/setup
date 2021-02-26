@@ -11,3 +11,8 @@ for i in $DOTFILES_DIR/dotfiles/*; do
   rm -rf ~/.$(basename $i)
   ln -s $i ~/.$(basename $i)
 done
+
+if [ $SPIN ]; then
+else
+  git config commit.gpgsign true
+fi
