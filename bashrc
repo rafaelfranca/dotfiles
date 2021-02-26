@@ -10,7 +10,7 @@ export LC_ALL="en_US.UTF-8"
 export LSCOLORS="exfxbxdxcxegedabagacab"
 
 # Aliases and functions
-for i in ~/.dotfiles/{aliases,functions}/*.sh ; do . $i ; done
+for i in ~/.dotfiles/aliases/*.sh ; do . $i ; done
 
 if [ $(uname) = "Darwin" ]; then
   . ~/.dotfiles/mac.sh
