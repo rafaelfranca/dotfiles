@@ -3,6 +3,21 @@ if [ $SPIN ]; then
   source /usr/local/share/chruby/auto.sh
 fi
 
+# History
+export HISTFILE=~/.zsh_history
+export HISTSIZE=50000
+export SAVEHIST=10000
+export HISTTIMEFORMAT="[%F %T] "
+setopt inc_append_history
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
+
+export EDITOR='code --wait'
+
 if [ $SPIN ]; then
   DOTFILES_DIR=~/dotfiles
 else
