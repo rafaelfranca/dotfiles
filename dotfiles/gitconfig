@@ -101,3 +101,5 @@
 [mergetool "code"]
 	cmd = code $MERGED
 	trustExitCode = true
+[commit]
+	gpgsign = true
