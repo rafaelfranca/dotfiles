@@ -42,7 +42,7 @@
 	s = status -s
 	sa = stash apply
 	sp = stash pop
-	sq = rebase --interactive origin/master
+	sq = rebase --interactive origin/master --autosquash
 	ss = stash
 	un = reset HEAD
 	up = rebase origin/master
