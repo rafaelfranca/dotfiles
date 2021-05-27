@@ -2,6 +2,9 @@
 
 if [ $SPIN ]; then
   DOTFILES_DIR=~/dotfiles
+
+  gpgconf --launch dirmngr
+  gpg --keyserver keys.openpgp.org --recv 54FE550EA35E26D7C75362C1FC23B6D0F1EEE948
 else
   DOTFILES_DIR=~/.dotfiles
 fi
