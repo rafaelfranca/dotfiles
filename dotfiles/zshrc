@@ -1,6 +1,8 @@
 if [ $SPIN ]; then
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
+else
+  eval "$(rbenv init -)"
 fi
 
 # History
