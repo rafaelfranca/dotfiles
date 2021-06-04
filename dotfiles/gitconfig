@@ -46,6 +46,8 @@
 	ss = stash
 	un = reset HEAD
 	up = rebase origin/master
+	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
+	branch-cleanup = ! git branch --merged | grep -v \"*\" | xargs git branch -d
 [push]
 	default = current
 [merge]
