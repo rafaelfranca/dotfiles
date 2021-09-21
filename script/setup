@@ -1,16 +1,41 @@
-#!/bin/bash
+#!/bin/sh
+# Install all dotfiles into the home directory
+
+set -e
 
 if [ $SPIN ]; then
-  DOTFILES_DIR=~/dotfiles
+  DOTFILESDIR=~/dotfiles
 
   gpgconf --launch dirmngr
   gpg --keyserver keys.openpgp.org --recv 54FE550EA35E26D7C75362C1FC23B6D0F1EEE948
+
+  for i in $DOTFILES_DIR/dotfiles/*; do
+    echo "Installing $(basename $i)..."
+    rm -rf ~/.$(basename $i)
+    ln -s $i ~/.$(basename $i)
+  done
+else if [ $CODESPACES ]; then
+  # Figure out the absolute path of the dotfiles directory
+  DOTFILESDIRREL="$(dirname "$0")"
+  cd $DOTFILESDIRREL/..
+  DOTFILESDIR="$(pwd -P)"
+
+  for DOTFILE in dotfiles/*; do
+    HOMEFILE="$HOME/.$(basename $DOTFILE)"
+    DIRFILE="$DOTFILESDIR/$DOTFILE"
+
+    echo $HOMEFILE
+    echo $DIRFILE
+
+    # Create (and overwrite if needed) file symlinks
+    ln -sfv "$DIRFILE" "$HOMEFILE"
+  done
 else
   DOTFILES_DIR=~/.dotfiles
-fi
 
-for i in $DOTFILES_DIR/dotfiles/*; do
-  echo "Installing $(basename $i)..."
-  rm -rf ~/.$(basename $i)
-  ln -s $i ~/.$(basename $i)
-done
+  for i in $DOTFILES_DIR/dotfiles/*; do
+    echo "Installing $(basename $i)..."
+    rm -rf ~/.$(basename $i)
+    ln -s $i ~/.$(basename $i)
+  done
+fi
