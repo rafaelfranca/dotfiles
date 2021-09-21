@@ -8,6 +8,6 @@ sudo systemctl start mysql@rails--rails
 
 export REDIS_URL="redis://localhost:`cat /run/ports/rails--rails/svc/redis`"
 export MEMCACHE_SERVERS="localhost:`cat /run/ports/rails--rails/svc/memcached`"
-export MYSQL_SOCK="/var/run/mysqld-rails--rails/mysqld.sock"
+export MYSQL_SOCK="/run/mysqld-rails--rails/mysqld.sock"
 
-mysql -uroot --socket=/var/run/mysqld-rails--rails/mysqld.sock -e "CREATE USER 'rails'@'localhost'; GRANT ALL PRIVILEGES ON activerecord_unittest.* to 'rails'@'localhost'; GRANT ALL PRIVILEGES ON activerecord_unittest2.* to 'rails'@'localhost'; GRANT ALL PRIVILEGES ON inexistent_activerecord_unittest.* to 'rails'@'localhost';"
+mysql -uroot --socket=/run/mysqld-rails--rails/mysqld.sock -e "CREATE USER 'rails'@'localhost'; GRANT ALL PRIVILEGES ON activerecord_unittest.* to 'rails'@'localhost'; GRANT ALL PRIVILEGES ON activerecord_unittest2.* to 'rails'@'localhost'; GRANT ALL PRIVILEGES ON inexistent_activerecord_unittest.* to 'rails'@'localhost';"
