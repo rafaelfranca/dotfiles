@@ -14,7 +14,7 @@ if [ $SPIN ]; then
     rm -rf ~/.$(basename $i)
     ln -s $i ~/.$(basename $i)
   done
-else if [ $CODESPACES ]; then
+elif [ $CODESPACES ]; then
   # Figure out the absolute path of the dotfiles directory
   DOTFILESDIRREL="$(dirname "$0")"
   cd $DOTFILESDIRREL/..
