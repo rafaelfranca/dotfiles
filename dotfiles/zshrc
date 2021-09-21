@@ -15,6 +15,10 @@ export EDITOR='code --wait'
 
 if [ $SPIN ]; then
   DOTFILES_DIR=~/dotfiles
+elif [ $CODESPACES ]; then
+  DOTFILESDIRREL="$(dirname "$0")"
+  cd $DOTFILESDIRREL/..
+  DOTFILES_DIR="$(pwd -P)"
 else
   DOTFILES_DIR=~/.dotfiles
 fi
