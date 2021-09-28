@@ -9,7 +9,7 @@ if [ $SPIN ]; then
   gpgconf --launch dirmngr
   gpg --keyserver keys.openpgp.org --recv 54FE550EA35E26D7C75362C1FC23B6D0F1EEE948
 
-  for i in $DOTFILES_DIR/dotfiles/*; do
+  for i in $DOTFILESDIR/dotfiles/*; do
     echo "Installing $(basename $i)..."
     rm -rf ~/.$(basename $i)
     ln -s $i ~/.$(basename $i)
@@ -31,9 +31,9 @@ elif [ $CODESPACES ]; then
     ln -sfv "$DIRFILE" "$HOMEFILE"
   done
 else
-  DOTFILES_DIR=~/.dotfiles
+  DOTFILESDIR=~/.dotfiles
 
-  for i in $DOTFILES_DIR/dotfiles/*; do
+  for i in $DOTFILESDIR/dotfiles/*; do
     echo "Installing $(basename $i)..."
     rm -rf ~/.$(basename $i)
     ln -s $i ~/.$(basename $i)
