@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo apt install -y sqlite libsqlite3-dev libpq-dev libxml2-dev libncurses-dev
+sudo apt install -y sqlite libsqlite3-dev libpq-dev libxml2-dev libncurses-dev ffmpeg mupdf mupdf-tools libvips poppler-utils
+
 
 sudo systemctl start redis@rails--rails
 sudo systemctl start memcached@rails--rails
