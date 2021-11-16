@@ -17,6 +17,8 @@ if [ $SPIN ]; then
   DOTFILES_DIR=~/dotfiles
 elif [ $CODESPACES ]; then
   DOTFILES_DIR=/workspaces/.codespaces/.persistedshare/dotfiles
+elif [ $REMOTE_CONTAINERS ]; then
+  DOTFILES_DIR=~/dotfiles
 else
   DOTFILES_DIR=~/.dotfiles
 fi

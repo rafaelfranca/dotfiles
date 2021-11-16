@@ -1,7 +1,7 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
 
-set -e
+set -ex
 
 if [ $SPIN ]; then
   DOTFILESDIR=~/dotfiles
@@ -13,6 +13,22 @@ if [ $SPIN ]; then
     echo "Installing $(basename $i)..."
     rm -rf ~/.$(basename $i)
     ln -s $i ~/.$(basename $i)
+  done
+elif [ $REMOTE_CONTAINERS ]; then
+  # Figure out the absolute path of the dotfiles directory
+  DOTFILESDIRREL="$(dirname "$0")"
+  cd $DOTFILESDIRREL/..
+  DOTFILESDIR="$(pwd -P)"
+
+  for DOTFILE in dotfiles/*; do
+    HOMEFILE="$HOME/.$(basename $DOTFILE)"
+    DIRFILE="$DOTFILESDIR/$DOTFILE"
+
+    echo $HOMEFILE
+    echo $DIRFILE
+
+    # Create (and overwrite if needed) file symlinks
+    ln -sfv "$DIRFILE" "$HOMEFILE"
   done
 elif [ $CODESPACES ]; then
   # Figure out the absolute path of the dotfiles directory
