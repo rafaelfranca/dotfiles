@@ -21,7 +21,7 @@
 	cp = cherry-pick
 	d = diff
 	dc = diff --cached
-	dm = diff master
+	dm = diff main
 	dw = diff --word-diff=color
 	f = fetch
 	fix = commit --amend -C HEAD
@@ -42,10 +42,10 @@
 	s = status -s
 	sa = stash apply
 	sp = stash pop
-	sq = rebase --interactive origin/master --autosquash
+	sq = rebase --interactive origin/main --autosquash
 	ss = stash
 	un = reset HEAD
-	up = rebase origin/master
+	up = rebase origin/main
 	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 	branch-cleanup = ! git branch --merged | grep -v \"*\" | xargs git branch -d
 [push]
