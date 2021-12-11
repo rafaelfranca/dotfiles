@@ -25,6 +25,9 @@ fi
 
 for i in $DOTFILES_DIR/aliases/*.sh ; do . $i ; done
 
+# Load Mac-specific configurations
+if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
+
 # Interactive prompt
 
 autoload -Uz vcs_info
