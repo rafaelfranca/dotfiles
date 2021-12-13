@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "homebrew/cask-drivers"
 brew "git"
 brew "readline", link: true
 brew "ansible"
@@ -45,6 +46,7 @@ cask "vlc"
 cask "xld"
 cask "hey"
 cask "visual-studio-code"
+cask "elgato-control-center"
 mas "Be Focused Pro", id: 961632517
 mas "Things", id: 904280696
 mas "Tweetbot", id: 557168941
