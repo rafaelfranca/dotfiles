@@ -103,3 +103,5 @@
 	trustExitCode = true
 [commit]
 	gpgsign = true
+[feature]
+        manyFiles = true
