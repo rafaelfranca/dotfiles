@@ -48,4 +48,5 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "xld"
+cask "todoist"
 mas "Keynote", id: 409183694
