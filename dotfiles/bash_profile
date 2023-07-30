@@ -1,8 +1,0 @@
-source ~/.dotfiles/bashrc
-
-if [[ -f ~/.bashrc ]]; then source ~/.bashrc; fi
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-export PATH="$HOME/.yarn/bin:$PATH"
-if [ -e /Users/rafaelfranca/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/rafaelfranca/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
