@@ -1,3 +1,8 @@
+# Key bindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
 # History
 export HISTFILE=~/.zsh_history
 export HISTSIZE=50000
