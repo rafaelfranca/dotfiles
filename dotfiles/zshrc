@@ -52,3 +52,9 @@ zstyle ':vcs_info:git:*' formats '%F{200}[%b%u%c]%f'
 zstyle ':vcs_info:*' enable git
 
 PROMPT='%(?.%F{green}√.%F{red}?%?)%f [$RUBY_ENGINE-$RUBY_VERSION] %B%~%b $vcs_info_msg_0_ $ '
+
+# Completion
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
