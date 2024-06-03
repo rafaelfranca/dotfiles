@@ -14,7 +14,7 @@ if [ $SPIN ]; then
     rm -rf ~/.$(basename $i)
     ln -s $i ~/.$(basename $i)
   done
-elif [ $REMOTE_CONTAINERS ]; then
+elif [ $REMOTE_CONTAINERS ] || [ $CODESPACES ]; then
   # Figure out the absolute path of the dotfiles directory
   DOTFILESDIRREL="$(dirname "$0")"
   cd $DOTFILESDIRREL/..
@@ -23,25 +23,6 @@ elif [ $REMOTE_CONTAINERS ]; then
   for DOTFILE in dotfiles/*; do
     HOMEFILE="$HOME/.$(basename $DOTFILE)"
     DIRFILE="$DOTFILESDIR/$DOTFILE"
-
-    echo $HOMEFILE
-    echo $DIRFILE
-
-    # Create (and overwrite if needed) file symlinks
-    ln -sfv "$DIRFILE" "$HOMEFILE"
-  done
-elif [ $CODESPACES ]; then
-  # Figure out the absolute path of the dotfiles directory
-  DOTFILESDIRREL="$(dirname "$0")"
-  cd $DOTFILESDIRREL/..
-  DOTFILESDIR="$(pwd -P)"
-
-  for DOTFILE in dotfiles/*; do
-    HOMEFILE="$HOME/.$(basename $DOTFILE)"
-    DIRFILE="$DOTFILESDIR/$DOTFILE"
-
-    echo $HOMEFILE
-    echo $DIRFILE
 
     # Create (and overwrite if needed) file symlinks
     ln -sfv "$DIRFILE" "$HOMEFILE"
