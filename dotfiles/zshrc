@@ -21,12 +21,10 @@ setopt hist_verify            # show command with history expansion to user befo
 
 export EDITOR='code --wait'
 
-if [ $SPIN ]; then
+if [ $SPIN ] || [ $REMOTE_CONTAINERS ]; then
   DOTFILES_DIR=~/dotfiles
 elif [ $CODESPACES ]; then
   DOTFILES_DIR=/workspaces/.codespaces/.persistedshare/dotfiles
-elif [ $REMOTE_CONTAINERS ]; then
-  DOTFILES_DIR=~/dotfiles
 else
   DOTFILES_DIR=~/.dotfiles
 fi
