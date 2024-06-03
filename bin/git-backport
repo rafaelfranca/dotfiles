@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# This script is to backport a commit from a branch to another branch.
+# It will checkout the target branch, cherry-pick the commit.
+#
+# If commit is a merge commit, use the -m option.
+#
+# Usage:
+#   git-backport <commit> <target-branch>
+#   git-backport -m <merge-commit> <target-branch>
+
+set -e
+
+if [ "$1" = "--help" ]; then
+  echo "Backport a commit from a branch to another branch."
+  echo
+  echo "Usage: git-backport <commit> <target-branch>"
+  echo "       git-backport -m <merge-commit> <target-branch>"
+  exit 0
+fi
+
+if [ "$1" = "-m" ]; then
+  if [ "$#" -ne 3 ]; then
+    echo "Usage: git-backport -m <merge-commit> <target-branch>"
+    exit 1
+  fi
+
+  commit="$2"
+  target_branch="$3"
+  cherry_pick_option="-m 1"
+else
+  if [ "$#" -ne 2 ]; then
+    echo "Usage: git-backport <commit> <target-branch>"
+    echo "       git-backport -m <merge-commit> <target-branch>"
+    exit 1
+  fi
+
+  commit="$1"
+  target_branch="$2"
+  cherry_pick_option=""
+fi
+
+git checkout "$target_branch"
+git cherry-pick "$cherry_pick_option" "$commit"
