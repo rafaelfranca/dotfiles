@@ -31,7 +31,10 @@ else
   DOTFILES_DIR=~/.dotfiles
 fi
 
+# Aliases
 for i in $DOTFILES_DIR/aliases/*.sh ; do . $i ; done
+
+alias ls='ls --color'
 
 # Load Mac-specific configurations
 if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
