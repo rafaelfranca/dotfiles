@@ -41,4 +41,10 @@ else
 fi
 
 git checkout "$target_branch"
-git cherry-pick "$cherry_pick_option" "$commit"
+git pull
+
+if [ -n "$cherry_pick_option" ]; then
+  git cherry-pick "$cherry_pick_option" "$commit"
+else
+  git cherry-pick "$commit"
+fi
