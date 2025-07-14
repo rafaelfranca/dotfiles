@@ -13,3 +13,4 @@ Session.vim
 *.orig
 .idea
 .rakeTasks
+.plans/
