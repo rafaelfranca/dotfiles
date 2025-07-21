@@ -99,7 +99,7 @@
 [gc]
 	writeCommitGraph = true
 [mergetool "code"]
-	cmd = $EDITOR --merge $REMOTE $LOCAL $BASE $MERGED
+	cmd = eval \"$EDITOR\" --merge $REMOTE $LOCAL $BASE $MERGED
 	trustExitCode = true
 [commit]
 	gpgsign = true
