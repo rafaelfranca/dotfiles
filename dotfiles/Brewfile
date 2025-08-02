@@ -31,3 +31,4 @@ cask "xld"
 cask "todoist"
 mas "Keynote", id: 409183694
 mas "Amphetamine", id: 937984704
+mas "Parachute Backup", id: 6748614170
