@@ -1,5 +1,8 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
 tap "homebrew/bundle"
-tap "homebrew/services"
 brew "git"
 brew "htop"
 brew "mas"
@@ -32,3 +35,5 @@ cask "todoist"
 mas "Keynote", id: 409183694
 mas "Amphetamine", id: 937984704
 mas "Parachute Backup", id: 6748614170
+EOF
+{{ end -}}
