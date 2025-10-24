@@ -27,7 +27,7 @@ else
   export EDITOR='code --wait'
 fi
 
-if [ $SPIN ] || [ $REMOTE_CONTAINERS ]; then
+if [ $REMOTE_CONTAINERS ]; then
   DOTFILES_DIR=~/dotfiles
 elif [ $CODESPACES ]; then
   DOTFILES_DIR=/workspaces/.codespaces/.persistedshare/dotfiles

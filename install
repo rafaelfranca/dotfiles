@@ -5,18 +5,7 @@
 
 set -ex
 
-if [ $SPIN ]; then
-  DOTFILESDIR=~/dotfiles
-
-  gpgconf --launch dirmngr
-  gpg --keyserver keys.openpgp.org --recv 54FE550EA35E26D7C75362C1FC23B6D0F1EEE948
-
-  for i in $DOTFILESDIR/dotfiles/*; do
-    echo "Installing $(basename $i)..."
-    rm -rf ~/.$(basename $i)
-    ln -s $i ~/.$(basename $i)
-  done
-elif [ $REMOTE_CONTAINERS ] || [ $CODESPACES ]; then
+if [ $REMOTE_CONTAINERS ] || [ $CODESPACES ]; then
   # Figure out the absolute path of the dotfiles directory
   DOTFILESDIRREL="$(dirname "$0")"
   cd $DOTFILESDIRREL/..
