@@ -2,7 +2,8 @@
 	name = Rafael Mendonça França
 	useConfigOnly = true
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
+	attributesfile = ~/.config/git/attributes
 	commitGraph = true
 [color]
 	diff = auto
