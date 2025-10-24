@@ -27,16 +27,8 @@ else
   export EDITOR='code --wait'
 fi
 
-if [ $REMOTE_CONTAINERS ]; then
-  DOTFILES_DIR=~/dotfiles
-elif [ $CODESPACES ]; then
-  DOTFILES_DIR=/workspaces/.codespaces/.persistedshare/dotfiles
-else
-  DOTFILES_DIR=~/.dotfiles
-fi
-
 # Aliases
-for i in $DOTFILES_DIR/aliases/*.sh ; do . $i ; done
+for i in ~/.aliases/*.sh ; do . $i ; done
 
 alias ls='ls --color'
 
