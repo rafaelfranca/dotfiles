@@ -32,8 +32,10 @@ for i in ~/.aliases/*.sh ; do . $i ; done
 
 alias ls='ls --color'
 
-# Load Mac-specific configurations
-if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
+{{- if eq .chezmoi.os "darwin" }}
+# Mac-specific configurations
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+{{- end }}
 
 # Interactive prompt
 
