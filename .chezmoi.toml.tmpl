@@ -1,0 +1,3 @@
+{{- if eq (env "REMOTE_CONTAINERS") "true" }}
+sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
+{{- end }}
