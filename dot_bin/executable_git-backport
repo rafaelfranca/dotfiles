@@ -18,7 +18,7 @@
 #   git-backport -m def456 8.0       # Backports merge commit to 8-0-stable
 #   git-backport abc123 main         # Backports to main (no transformation)
 
-set -e
+set -euo pipefail
 
 # Transform branch name: if it matches X.Y pattern, convert to X-Y-stable
 # Otherwise, use as-is
@@ -33,7 +33,7 @@ transform_branch_name() {
   fi
 }
 
-if [ "$1" = "--help" ]; then
+if [[ "$1" == "--help" ]]; then
   echo "Backport a commit from a branch to another branch."
   echo
   echo "Usage: git-backport <commit> <target-branch>"
@@ -44,8 +44,8 @@ if [ "$1" = "--help" ]; then
   exit 0
 fi
 
-if [ "$1" = "-m" ]; then
-  if [ "$#" -ne 3 ]; then
+if [[ "$1" == "-m" ]]; then
+  if [[ "$#" -ne 3 ]]; then
     echo "Usage: git-backport -m <merge-commit> <target-branch>"
     exit 1
   fi
@@ -54,7 +54,7 @@ if [ "$1" = "-m" ]; then
   target_branch=$(transform_branch_name "$3")
   cherry_pick_option="-m 1"
 else
-  if [ "$#" -ne 2 ]; then
+  if [[ "$#" -ne 2 ]]; then
     echo "Usage: git-backport <commit> <target-branch>"
     echo "       git-backport -m <merge-commit> <target-branch>"
     exit 1
@@ -65,11 +65,17 @@ else
   cherry_pick_option=""
 fi
 
+echo "Checking out branch: $target_branch"
 git checkout "$target_branch"
+
+echo "Pulling latest changes..."
 git pull
 
-if [ -n "$cherry_pick_option" ]; then
-  git cherry-pick "$cherry_pick_option" "$commit"
+echo "Cherry-picking commit: $commit"
+if [[ -n "$cherry_pick_option" ]]; then
+  git cherry-pick $cherry_pick_option "$commit"
 else
   git cherry-pick "$commit"
 fi
+
+echo "✓ Backport completed successfully!"
