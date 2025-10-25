@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=- <<EOF
 tap "homebrew/bundle"
 brew "git"
 brew "htop"
@@ -18,12 +18,11 @@ cask "elgato-camera-hub"
 cask "firefox"
 cask "google-chrome"
 cask "gpg-suite"
-cask "hey"
+cask "hey-desktop"
 cask "ghostty"
 cask "mdrp"
 cask "plex"
 cask "rectangle"
-cask "slack"
 cask "steam"
 cask "telegram"
 cask "viscosity"
@@ -31,7 +30,6 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "xld"
-cask "todoist"
 mas "Keynote", id: 409183694
 mas "Amphetamine", id: 937984704
 mas "Parachute Backup", id: 6748614170
