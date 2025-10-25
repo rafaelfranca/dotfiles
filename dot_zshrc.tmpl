@@ -27,21 +27,15 @@ else
   export EDITOR='code --wait'
 fi
 
-if [ $SPIN ] || [ $REMOTE_CONTAINERS ]; then
-  DOTFILES_DIR=~/dotfiles
-elif [ $CODESPACES ]; then
-  DOTFILES_DIR=/workspaces/.codespaces/.persistedshare/dotfiles
-else
-  DOTFILES_DIR=~/.dotfiles
-fi
-
 # Aliases
-for i in $DOTFILES_DIR/aliases/*.sh ; do . $i ; done
+for i in ~/.aliases/*.sh ; do . $i ; done
 
 alias ls='ls --color'
 
-# Load Mac-specific configurations
-if [ $(uname) = "Darwin" ]; then . ~/.dotfiles/mac.sh ; fi
+{{- if eq .chezmoi.os "darwin" }}
+# Mac-specific configurations
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+{{- end }}
 
 # Interactive prompt
 
@@ -63,5 +57,5 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-# add dotfiles/bin to the path
-export PATH=$PATH:$DOTFILES_DIR/bin
+# add .bin to the path
+export PATH=$PATH:~/.bin
