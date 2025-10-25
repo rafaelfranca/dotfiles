@@ -1,21 +1,46 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script is to backport a commit from a branch to another branch.
 # It will checkout the target branch, cherry-pick the commit.
 #
 # If commit is a merge commit, use the -m option.
 #
+# Branch names matching X.Y pattern (e.g., 7.0, 7.1, 8.0) will be automatically
+# converted to X-Y-stable format (e.g., 7-0-stable, 7-1-stable, 8-0-stable).
+# Other branch names will be used as-is.
+#
 # Usage:
 #   git-backport <commit> <target-branch>
 #   git-backport -m <merge-commit> <target-branch>
+#
+# Examples:
+#   git-backport abc123 7.1          # Backports to 7-1-stable
+#   git-backport -m def456 8.0       # Backports merge commit to 8-0-stable
+#   git-backport abc123 main         # Backports to main (no transformation)
 
 set -e
+
+# Transform branch name: if it matches X.Y pattern, convert to X-Y-stable
+# Otherwise, use as-is
+transform_branch_name() {
+  local branch="$1"
+  # Check if branch matches pattern like 7.0, 7.1, 8.0, etc.
+  if [[ "$branch" =~ ^[0-9]+\.[0-9]+$ ]]; then
+    # Valid X.Y pattern - replace dots with hyphens and append -stable
+    echo "${branch//\./-}-stable"
+  else
+    echo "$branch"
+  fi
+}
 
 if [ "$1" = "--help" ]; then
   echo "Backport a commit from a branch to another branch."
   echo
   echo "Usage: git-backport <commit> <target-branch>"
   echo "       git-backport -m <merge-commit> <target-branch>"
+  echo
+  echo "Note: Branch names matching X.Y pattern (e.g., 7.0, 7.1) will be"
+  echo "      automatically converted to X-Y-stable format (e.g., 7-0-stable)."
   exit 0
 fi
 
@@ -26,7 +51,7 @@ if [ "$1" = "-m" ]; then
   fi
 
   commit="$2"
-  target_branch="$3"
+  target_branch=$(transform_branch_name "$3")
   cherry_pick_option="-m 1"
 else
   if [ "$#" -ne 2 ]; then
@@ -36,7 +61,7 @@ else
   fi
 
   commit="$1"
-  target_branch="$2"
+  target_branch=$(transform_branch_name "$2")
   cherry_pick_option=""
 fi
 
