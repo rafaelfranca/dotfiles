@@ -3,6 +3,7 @@
 
 brew bundle --file=- <<EOF
 tap "homebrew/bundle"
+{{- if not .isWorkComputer }}
 brew "git"
 brew "htop"
 brew "mas"
@@ -10,29 +11,28 @@ brew "ykman"
 cask "1password"
 cask "adobe-acrobat-reader"
 cask "bartender"
-cask "basecamp"
 cask "chatgpt"
-cask "dash"
-cask "docker"
-cask "elgato-control-center"
-cask "elgato-camera-hub"
 cask "firefox"
-cask "google-chrome"
-cask "gpg-suite"
+cask "elgato-control-center"
 cask "hey-desktop"
-cask "ghostty"
 cask "mdrp"
-cask "plex"
-cask "rectangle"
 cask "steam"
 cask "telegram"
 cask "viscosity"
-cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "xld"
 mas "Keynote", id: 409183694
 mas "Amphetamine", id: 937984704
 mas "Parachute Backup", id: 6748614170
+{{- end }}
+cask "basecamp"
+cask "dash"
+cask "docker"
+cask "elgato-camera-hub"
+cask "google-chrome"
+cask "gpg-suite"
+cask "ghostty"
+cask "visual-studio-code"
 EOF
 {{ end -}}

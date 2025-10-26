@@ -1,3 +1,9 @@
+{{- $isWorkComputer := false }}
 {{- if eq (env "REMOTE_CONTAINERS") "true" }}
 sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
+{{- else }}
+{{-   $isWorkComputer = promptBoolOnce . "isWorkComputer" "Is this a work computer" }}
 {{- end }}
+
+[data]
+    isWorkComputer = {{ $isWorkComputer }}
