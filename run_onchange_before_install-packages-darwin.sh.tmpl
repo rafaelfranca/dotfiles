@@ -2,7 +2,6 @@
 #!/bin/bash
 
 brew bundle --file=- <<EOF
-tap "homebrew/bundle"
 {{- if not .isWorkComputer }}
 brew "git"
 brew "htop"
