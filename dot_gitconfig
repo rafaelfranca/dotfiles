@@ -106,3 +106,5 @@
 	gpgsign = true
 [feature]
         manyFiles = true
+[advice]
+	mergeConflict = false
