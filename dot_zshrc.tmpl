@@ -37,19 +37,23 @@ alias ls='ls --color'
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 {{- end }}
 
-# Interactive prompt
+# Interactive prompt (Starship)
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+else
+  # Fallback to default prompt if starship is not installed
+  autoload -Uz vcs_info
+  precmd_functions+=( vcs_info )
+  setopt prompt_subst
 
-autoload -Uz vcs_info
-precmd_functions+=( vcs_info )
-setopt prompt_subst
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:*' unstagedstr '*'
+  zstyle ':vcs_info:*' stagedstr '+'
+  zstyle ':vcs_info:git:*' formats '%F{200}[%b%u%c]%f'
+  zstyle ':vcs_info:*' enable git
 
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr '*'
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:git:*' formats '%F{200}[%b%u%c]%f'
-zstyle ':vcs_info:*' enable git
-
-PROMPT='%(?.%F{green}√.%F{red}?%?)%f [$RUBY_ENGINE-$RUBY_VERSION] %B%~%b $vcs_info_msg_0_ $ '
+  PROMPT='%(?.%F{green}√.%F{red}?%?)%f [$RUBY_ENGINE-$RUBY_VERSION] %B%~%b $vcs_info_msg_0_ $ '
+fi
 
 # Completion
 autoload -Uz compinit && compinit

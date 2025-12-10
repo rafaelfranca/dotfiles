@@ -1,0 +1,33 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+# Install Starship
+if ! command -v starship &> /dev/null; then
+  echo "Installing Starship..."
+  curl -sS https://starship.rs/install.sh | sh -s -- --yes
+fi
+
+# Install Fira Code Nerd Font
+FONT_DIR="$HOME/.local/share/fonts"
+FONT_NAME="FiraCode"
+
+if [ ! -f "$FONT_DIR/FiraCodeNerdFont-Regular.ttf" ]; then
+  echo "Installing Fira Code Nerd Font..."
+  mkdir -p "$FONT_DIR"
+
+  # Download and extract the font
+  FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip"
+  TEMP_ZIP=$(mktemp)
+
+  curl -fLo "$TEMP_ZIP" "$FONT_URL"
+  unzip -q "$TEMP_ZIP" -d "$FONT_DIR" '*.ttf'
+  rm "$TEMP_ZIP"
+
+  # Refresh font cache
+  if command -v fc-cache &> /dev/null; then
+    fc-cache -f "$FONT_DIR"
+  fi
+
+  echo "Fira Code Nerd Font installed successfully"
+fi
+{{ end -}}
