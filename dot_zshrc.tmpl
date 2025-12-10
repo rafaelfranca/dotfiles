@@ -19,13 +19,7 @@ setopt hist_find_no_dups      # don't display duplicate commands
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 
-# check if the editor is cursor by checking if /vscode/cursor-server exists
-if [ -d /vscode/cursor-server ]; then
-  export EDITOR='cursor --wait'
-  export GIT_EDITOR='cursor --wait'
-else
-  export EDITOR='code --wait'
-fi
+export EDITOR='code --wait'
 
 # Aliases
 for i in ~/.aliases/*.sh ; do . $i ; done
