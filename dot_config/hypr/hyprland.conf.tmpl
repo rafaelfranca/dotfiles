@@ -192,7 +192,7 @@ input {
     kb_layout = us
     kb_variant =
     kb_model =
-    kb_options =
+    kb_options = ctrl:swap_lwin_lctl,ctrl:swap_rwin_rctl,caps:super
     kb_rules =
 
     follow_mouse = 1
@@ -214,13 +214,12 @@ device {
     sensitivity = -0.5
 }
 
-
 ###################
 ### KEYBINDINGS ###
 ###################
 
 # See https://wiki.hypr.land/Configuring/Keywords/
-$mainMod = SUPER # Sets "Windows" key as main modifier
+$mainMod = SUPER # Sets "CTRL" key as main modifier, since we swapped it with "WIN" in the input section above
 
 # Example binds, see https://wiki.hypr.land/Configuring/Binds/ for more
 bind = $mainMod, Q, exec, $terminal
