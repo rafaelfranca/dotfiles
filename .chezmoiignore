@@ -2,3 +2,7 @@ install.sh
 README.md
 AGENTS.md
 .vscode/
+
+{{- if eq .chezmoi.osRelease.id "nixos" }}
+.zshrc
+{{- end }}
