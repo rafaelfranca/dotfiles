@@ -6,3 +6,8 @@ AGENTS.md
 {{- if eq .chezmoi.osRelease.id "nixos" }}
 .zshrc
 {{- end }}
+
+{{- if ne .chezmoi.osRelease.id "nixos" }}
+.config/wofi/
+.config/hypr/
+{{- end }}
