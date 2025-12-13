@@ -8,6 +8,7 @@ AGENTS.md
 {{- end }}
 
 {{- if ne .chezmoi.osRelease.id "nixos" }}
+dot_aliases/nixos.sh
 .config/wofi/
 .config/hypr/
 {{- end }}
