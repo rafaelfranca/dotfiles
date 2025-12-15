@@ -3,11 +3,11 @@ README.md
 AGENTS.md
 .vscode/
 
-{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "nixos") }}
+{{- if .isNixOS }}
 .zshrc
 {{- end }}
 
-{{- if or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "nixos") }}
+{{- if not .isNixOS }}
 .aliases/nixos.sh
 .config/wofi/
 .config/hypr/

@@ -1,4 +1,4 @@
-{{- if and (eq .chezmoi.os "linux") (ne .chezmoi.osRelease.id "nixos") -}}
+{{- if and (eq .chezmoi.os "linux") (not .isNixOS) -}}
 #!/bin/bash
 
 # Install Starship
