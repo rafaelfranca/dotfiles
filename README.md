@@ -25,8 +25,11 @@ chezmoi apply
 ## What's included
 
 - **Shell**: Zsh configuration with custom prompt and aliases
+- **Starship**: Cross-platform prompt with custom configuration
 - **Git**: Global configuration, ignore patterns, and attributes
 - **Homebrew**: Package management with brew bundle (macOS only)
+- **Linux**: Starship and font installation (non-NixOS systems)
+- **NixOS**: Hyprland and Wofi configurations
 - **Scripts**: Custom executables in `~/.bin/`
 - **Aliases**: Organized shell aliases in `~/.aliases/`
 
@@ -71,7 +74,8 @@ chezmoi apply --dry-run --verbose
 Configuration automatically adapts based on the operating system:
 
 - **macOS**: Installs Homebrew packages and applies Mac-specific settings
-- **Linux/Other**: Skips Mac-specific configuration
+- **Linux**: Installs Starship and fonts (except on NixOS)
+- **NixOS**: Uses system zsh config and includes Hyprland/Wofi configurations
 
 ## Package management (macOS)
 

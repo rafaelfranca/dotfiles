@@ -22,13 +22,20 @@ Files in `~/.local/share/chezmoi/` use special prefixes that determine how they'
 
 ```
 ~/.local/share/chezmoi/
+├── .chezmoiignore            # Platform-specific file exclusions
+├── .chezmoi.toml.tmpl        # Chezmoi configuration
 ├── dot_aliases/              # Shell aliases → ~/.aliases/
 ├── dot_bin/                  # Executable scripts → ~/.bin/
 ├── dot_config/               # XDG config → ~/.config/
-│   └── git/                  # Git ignore/attributes
+│   ├── git/                  # Git ignore/attributes
+│   ├── hypr/                 # Hyprland config (NixOS)
+│   ├── wofi/                 # Wofi launcher (NixOS)
+│   └── starship.toml         # Starship prompt config
 ├── dot_gitconfig             # Main git config → ~/.gitconfig
-├── dot_zshrc.tmpl            # Zsh config (templated)
-└── run_onchange_before_install-packages-darwin.sh.tmpl
+├── dot_zshrc.user.tmpl       # User-specific zsh config
+├── symlink_dot_zshrc         # Zsh config symlink
+├── run_onchange_before_install-packages-darwin.sh.tmpl  # macOS packages
+└── run_onchange_before_install-packages-linux.sh.tmpl   # Linux packages
 ```
 
 ## Platform-Specific Configuration
@@ -40,6 +47,27 @@ Files in `~/.local/share/chezmoi/` use special prefixes that determine how they'
    - Embeds Brewfile directly in script using bash here-document
    - Runs automatically when package list changes
    - Uses `brew bundle --no-lock --file=/dev/stdin`
+
+### Linux-Specific Features
+
+1. **Package installation**: Managed via `run_onchange_before_install-packages-linux.sh.tmpl`
+   - Installs Starship prompt and Fira Code Nerd Font
+   - Skipped on NixOS (uses declarative package management)
+2. **NixOS support**: Special handling via `.chezmoiignore`
+   - NixOS-specific configs: Hyprland, Wofi
+   - Uses system zsh config instead of dotfiles version
+
+### Platform Detection
+
+Templates must safely check platform before accessing OS-specific variables:
+
+```bash
+# Safe: Check OS before accessing osRelease
+{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "nixos") }}
+
+# Unsafe: osRelease doesn't exist on macOS
+{{- if eq .chezmoi.osRelease.id "nixos" }}
+```
 
 ### Templates in `.zshrc`
 
