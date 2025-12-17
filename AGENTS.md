@@ -28,8 +28,6 @@ Files in `~/.local/share/chezmoi/` use special prefixes that determine how they'
 ├── dot_bin/                  # Executable scripts → ~/.bin/
 ├── dot_config/               # XDG config → ~/.config/
 │   ├── git/                  # Git ignore/attributes
-│   ├── hypr/                 # Hyprland config (NixOS)
-│   ├── wofi/                 # Wofi launcher (NixOS)
 │   └── starship.toml         # Starship prompt config
 ├── dot_gitconfig             # Main git config → ~/.gitconfig
 ├── dot_zshrc.user.tmpl       # User-specific zsh config
@@ -54,7 +52,6 @@ Files in `~/.local/share/chezmoi/` use special prefixes that determine how they'
    - Installs Starship prompt and Fira Code Nerd Font
    - Skipped on NixOS (uses declarative package management)
 2. **NixOS support**: Special handling via `.chezmoiignore`
-   - NixOS-specific configs: Hyprland, Wofi
    - Uses system zsh config instead of dotfiles version
 
 ### Platform Detection

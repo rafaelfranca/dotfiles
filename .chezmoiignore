@@ -9,5 +9,4 @@ AGENTS.md
 
 {{- if not .isNixOS }}
 .aliases/nixos.sh
-.config/wofi/
 {{- end }}
