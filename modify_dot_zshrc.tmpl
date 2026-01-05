@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Read from stdin (the current target file content)
+content=$(cat)
+
+# Check if already configured
+if echo "$content" | grep -q "source ~/.zshrc.user\|^\. ~/.zshrc.user"; then
+  # Already configured, output unchanged
+  echo "$content"
+else
+  # Prepend the sourcing logic
+  cat <<'EOF'
+# Source user zshrc configuration managed by chezmoi
+if [ -f ~/.zshrc.user ]; then
+  source ~/.zshrc.user
+fi
+
+# System and tool-specific configurations below
+EOF
+  # Append the existing content
+  echo "$content"
+fi
