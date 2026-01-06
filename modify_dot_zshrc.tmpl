@@ -8,15 +8,14 @@ if echo "$content" | grep -q "source ~/.zshrc.user\|^\. ~/.zshrc.user"; then
   # Already configured, output unchanged
   echo "$content"
 else
-  # Prepend the sourcing logic
+  # Append the user config sourcing at the end
+  echo "$content"
   cat <<'EOF'
+
 # Source user zshrc configuration managed by chezmoi
+# Loaded last to allow user config to override system settings
 if [ -f ~/.zshrc.user ]; then
   source ~/.zshrc.user
 fi
-
-# System and tool-specific configurations below
 EOF
-  # Append the existing content
-  echo "$content"
 fi
