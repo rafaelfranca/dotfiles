@@ -26,11 +26,6 @@ for i in ~/.aliases/*.sh ; do . $i ; done
 
 alias ls='ls --color'
 
-{{- if eq .chezmoi.os "darwin" }}
-# Mac-specific configurations
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-{{- end }}
-
 # Interactive prompt (Starship)
 if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
