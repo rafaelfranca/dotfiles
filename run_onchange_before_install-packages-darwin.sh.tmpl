@@ -3,9 +3,11 @@
 
 brew bundle --file=- <<EOF
 {{- if not .isWorkComputer }}
+tap "anomalyco/tap"
 brew "git"
 brew "htop"
 brew "mas"
+brew "anomalyco/tap/opencode"
 brew "ykman"
 cask "1password-cli"
 cask "1password"
