@@ -52,6 +52,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # add .bin to the path
 export PATH=$PATH:~/.bin
-if [ -f ~/.local/bin/mise ]; then
-  eval "$(~/.local/bin/mise activate zsh)"
+
+# Initialize mise if available
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
 fi
