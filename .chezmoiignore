@@ -3,6 +3,10 @@ README.md
 AGENTS.md
 .vscode/
 
+{{- if .isRemoteContainer }}
+.config/mise/config.toml
+{{- end }}
+
 {{- if .isNixOS }}
 .zshrc
 {{- end }}
