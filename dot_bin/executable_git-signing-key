@@ -1,0 +1,288 @@
+#!/bin/bash
+
+set -euo pipefail
+
+show_usage() {
+  cat <<'EOF'
+Choose the Git signing key to use.
+
+Usage:
+  git-signing-key [--local|--global] [--ssh|--gpg] [KEY_OR_PUB_FILE]
+  git-signing-key --help
+
+Without arguments, the command presents an interactive list of keys from:
+  - ssh-agent (ssh-add -L)
+  - ~/.ssh/*.pub
+  - gpg secret keys (gpg --list-secret-keys)
+
+When run inside a Git repository, it defaults to --local.
+Outside a repository, it defaults to --global.
+
+Examples:
+  git-signing-key
+  git-signing-key --global
+  git-signing-key --gpg
+  git-signing-key ~/.ssh/id_ed25519.pub
+  git-signing-key "ssh-ed25519 AAAAC3... comment"
+  git-signing-key --gpg 1234ABCDEF567890
+EOF
+}
+
+ensure_git_repo_for_local_scope() {
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "Error: --local requires running inside a Git repository." >&2
+    exit 1
+  fi
+}
+
+detect_scope() {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "--local"
+  else
+    echo "--global"
+  fi
+}
+
+trim_trailing_newline() {
+  printf '%s' "$1" | awk 'NF {sub(/[[:space:]]+$/, ""); print}'
+}
+
+read_key_from_file() {
+  local file_path="$1"
+
+  if [[ ! -f "$file_path" ]]; then
+    echo "Error: File not found: $file_path" >&2
+    exit 1
+  fi
+
+  trim_trailing_newline "$(<"$file_path")"
+}
+
+parse_gpg_keys() {
+  local record_type
+  local field9
+  local current_fingerprint=""
+
+  while IFS=: read -r record_type _ _ _ _ _ _ _ _ field9 _ _ _ _ _ _ _ _ _ _; do
+    case "$record_type" in
+      sec)
+        current_fingerprint=""
+        ;;
+      fpr)
+        if [[ -z "$current_fingerprint" ]]; then
+          current_fingerprint="$field9"
+        fi
+        ;;
+      uid)
+        if [[ -n "$current_fingerprint" ]]; then
+          printf 'openpgp|%s|%s\n' "$current_fingerprint" "$field9"
+          current_fingerprint=""
+        fi
+        ;;
+    esac
+  done < <(gpg --list-secret-keys --keyid-format=long --with-colons 2>/dev/null || true)
+}
+
+collect_ssh_keys() {
+  local key
+  local ssh_dir="$HOME/.ssh"
+
+  if command -v ssh-add >/dev/null 2>&1; then
+    while IFS= read -r key; do
+      [[ -z "$key" ]] && continue
+      [[ "$key" == The\ agent\ has\ no\ identities.* ]] && continue
+      printf 'ssh|%s|agent\n' "$key"
+    done < <(ssh-add -L 2>/dev/null || true)
+  fi
+
+  if [[ -d "$ssh_dir" ]]; then
+    while IFS= read -r -d '' pub_file; do
+      key=$(read_key_from_file "$pub_file")
+      [[ -z "$key" ]] && continue
+      printf 'ssh|%s|%s\n' "$key" "$pub_file"
+    done < <(find "$ssh_dir" -maxdepth 1 -name '*.pub' -print0 | sort -z)
+  fi
+}
+
+collect_keys() {
+  local key_type_filter="$1"
+  local entry
+  local -a keys=()
+
+  if [[ "$key_type_filter" != "openpgp" ]]; then
+    while IFS= read -r entry; do
+      [[ -z "$entry" ]] && continue
+      keys+=("$entry")
+    done < <(collect_ssh_keys)
+  fi
+
+  if [[ "$key_type_filter" != "ssh" ]] && command -v gpg >/dev/null 2>&1; then
+    while IFS= read -r entry; do
+      [[ -z "$entry" ]] && continue
+      keys+=("$entry")
+    done < <(parse_gpg_keys)
+  fi
+
+  if [[ ${#keys[@]} -eq 0 ]]; then
+    echo "Error: No signing keys found for the requested type." >&2
+    exit 1
+  fi
+
+  printf '%s\n' "${keys[@]}" | awk '!seen[$0]++'
+}
+
+choose_key_interactively() {
+  local key_type_filter="$1"
+  local index=1
+  local selected
+  local selected_type
+  local selected_key
+  local selected_label
+  local -a keys=()
+
+  while IFS= read -r selected; do
+    keys+=("$selected")
+  done < <(collect_keys "$key_type_filter")
+
+  echo "Available signing keys:" >&2
+  for selected in "${keys[@]}"; do
+    IFS='|' read -r selected_type selected_key selected_label <<< "$selected"
+    printf '  %d) [%s] %s' "$index" "$selected_type" "$selected_key" >&2
+    if [[ -n "$selected_label" ]]; then
+      printf ' (%s)' "$selected_label" >&2
+    fi
+    printf '\n' >&2
+    index=$((index + 1))
+  done
+
+  if [[ ! -r /dev/tty ]]; then
+    echo "Error: Interactive selection requires a terminal." >&2
+    exit 1
+  fi
+
+  printf 'Choose a key number: ' >&2
+  read -r index < /dev/tty
+
+  if [[ ! "$index" =~ ^[0-9]+$ ]] || (( index < 1 || index > ${#keys[@]} )); then
+    echo "Error: Invalid selection." >&2
+    exit 1
+  fi
+
+  printf '%s' "${keys[index-1]}"
+}
+
+detect_key_type() {
+  local signing_key="$1"
+  local requested_type="$2"
+
+  if [[ -n "$requested_type" ]]; then
+    printf '%s' "$requested_type"
+    return 0
+  fi
+
+  if [[ "$signing_key" == ssh-* ]]; then
+    printf '%s' "ssh"
+    return 0
+  fi
+
+  if [[ "$signing_key" =~ ^[A-Fa-f0-9]{8,40}$ ]]; then
+    printf '%s' "openpgp"
+    return 0
+  fi
+
+  echo "Error: Could not infer key type for: $signing_key" >&2
+  echo "Use --ssh or --gpg to specify the key type." >&2
+  exit 1
+}
+
+set_signing_key() {
+  local scope="$1"
+  local key_type="$2"
+  local signing_key="$3"
+
+  git config "$scope" gpg.format "$key_type"
+  git config "$scope" user.signingkey "$signing_key"
+
+  echo "Configured Git signing key in $scope scope."
+  git config "$scope" --get gpg.format
+  git config "$scope" --get user.signingkey
+}
+
+main() {
+  local scope=""
+  local key_type_filter=""
+  local key_input=""
+  local selected_entry=""
+  local key_type=""
+  local signing_key=""
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --help)
+        show_usage
+        exit 0
+        ;;
+      --local|--global)
+        if [[ -n "$scope" ]]; then
+          echo "Error: Scope already specified." >&2
+          exit 1
+        fi
+        scope="$1"
+        shift
+        ;;
+      --ssh)
+        if [[ -n "$key_type_filter" ]]; then
+          echo "Error: Key type already specified." >&2
+          exit 1
+        fi
+        key_type_filter="ssh"
+        shift
+        ;;
+      --gpg)
+        if [[ -n "$key_type_filter" ]]; then
+          echo "Error: Key type already specified." >&2
+          exit 1
+        fi
+        key_type_filter="openpgp"
+        shift
+        ;;
+      *)
+        if [[ -n "$key_input" ]]; then
+          echo "Error: Unexpected argument: $1" >&2
+          exit 1
+        fi
+        key_input="$1"
+        shift
+        ;;
+    esac
+  done
+
+  if [[ -z "$scope" ]]; then
+    scope=$(detect_scope)
+  fi
+
+  if [[ "$scope" == "--local" ]]; then
+    ensure_git_repo_for_local_scope
+  fi
+
+  if [[ -n "$key_input" ]]; then
+    if [[ -f "$key_input" ]]; then
+      signing_key=$(read_key_from_file "$key_input")
+    else
+      signing_key=$(trim_trailing_newline "$key_input")
+    fi
+    key_type=$(detect_key_type "$signing_key" "$key_type_filter")
+  else
+    selected_entry=$(choose_key_interactively "$key_type_filter")
+    IFS='|' read -r key_type signing_key _ <<< "$selected_entry"
+  fi
+
+  if [[ "$key_type" != "ssh" && "$key_type" != "openpgp" ]]; then
+    echo "Error: Unsupported key type: $key_type" >&2
+    exit 1
+  fi
+
+  set_signing_key "$scope" "$key_type" "$signing_key"
+}
+
+main "$@"

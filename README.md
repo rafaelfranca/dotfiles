@@ -41,6 +41,22 @@ chezmoi apply
 chezmoi update
 ```
 
+### Choose a Git signing key
+
+```bash
+# Pick a signing key for the current repository
+git-signing-key
+
+# Set the global default signing key
+git-signing-key --global
+
+# Only show GPG keys
+git-signing-key --gpg
+
+# Only show SSH keys
+git-signing-key --ssh
+```
+
 ### Edit dotfiles
 
 ```bash

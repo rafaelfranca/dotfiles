@@ -98,6 +98,8 @@
 [mergetool "code"]
 	cmd = eval \"$EDITOR\" --merge $REMOTE $LOCAL $BASE $MERGED
 	trustExitCode = true
+[gpg]
+	format = openpgp
 [commit]
 	gpgsign = true
 [feature]
