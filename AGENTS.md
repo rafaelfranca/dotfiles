@@ -32,8 +32,7 @@ Files in `~/.local/share/chezmoi/` use special prefixes that determine how they'
 ├── dot_gitconfig             # Main git config → ~/.gitconfig
 ├── dot_zshrc.user.tmpl       # User-specific zsh config
 ├── symlink_dot_zshrc         # Zsh config symlink
-├── run_onchange_before_install-packages-darwin.sh.tmpl  # macOS packages
-└── run_onchange_before_install-packages-linux.sh.tmpl   # Linux packages
+├── run_onchange_before_install-packages-linux.sh.tmpl  # Linux packages
 ```
 
 ## Platform-Specific Configuration
@@ -41,10 +40,7 @@ Files in `~/.local/share/chezmoi/` use special prefixes that determine how they'
 ### macOS-Specific Features
 
 1. **Conditional templating**: Uses `{{- if eq .chezmoi.os "darwin" -}}` for macOS-only config
-2. **Homebrew packages**: Managed via `run_onchange_before_install-packages-darwin.sh.tmpl`
-   - Embeds Brewfile directly in script using bash here-document
-   - Runs automatically when package list changes
-   - Uses `brew bundle --no-lock --file=/dev/stdin`
+2. **Nix-darwin ownership**: Personal Mac applications and CLI packages are declared in `nixos-config/hosts/Rafaels-MacBook-Air/`; the 1Password SSH agent is declared in `nixos-config/home/rafael/darwin.nix`
 
 ### Linux-Specific Features
 
@@ -117,13 +113,10 @@ chezmoi add --template ~/.bin/script-name
 
 ### Adding Packages (macOS)
 
-Edit `run_onchange_before_install-packages-darwin.sh.tmpl` and add to the here-document:
+Add personal Mac casks and Mac App Store applications in `nixos-config/hosts/Rafaels-MacBook-Air/configuration.nix`. Add Nix-provided CLI tools in `nixos-config/home/rafael/darwin.nix`.
 
-```bash
-brew "package-name"
-cask "application-name"
-mas "App Name", id: 123456
-```
+Chezmoi remains responsible for cross-platform dotfiles and the Linux package bootstrap; do not add macOS package or LaunchAgent installation scripts here.
+
 
 ### Testing Changes
 
