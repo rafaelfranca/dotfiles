@@ -27,7 +27,7 @@ chezmoi apply
 - **Shell**: Zsh configuration with custom prompt and aliases
 - **Starship**: Cross-platform prompt with custom configuration
 - **Git**: Global configuration, ignore patterns, and attributes
-- **Homebrew**: Package management with brew bundle (macOS only)
+- **macOS applications and CLI packages**: Managed declaratively by `nixos-config/hosts/Rafaels-MacBook-Air/` and `nixos-config/home/rafael/darwin.nix`
 - **Linux**: Starship and font installation (non-NixOS systems)
 - **Scripts**: Custom executables in `~/.bin/`
 - **Aliases**: Organized shell aliases in `~/.aliases/`
@@ -88,21 +88,18 @@ chezmoi apply --dry-run --verbose
 
 Configuration automatically adapts based on the operating system:
 
-- **macOS**: Installs Homebrew packages and applies Mac-specific settings
+- **macOS**: Mac-specific dotfiles remain here; applications and CLI packages are owned by `nixos-config/hosts/Rafaels-MacBook-Air/`, and the 1Password SSH agent is owned by `nixos-config/home/rafael/darwin.nix`
 - **Linux**: Installs Starship and fonts (except on NixOS)
 - **NixOS**: Uses system zsh config
 
 ## Package management (macOS)
 
-Packages are managed via Homebrew and automatically installed/updated when the package list changes:
+The personal Mac's applications and CLI packages are managed by nix-darwin:
 
-```bash
-# Edit the package list
-chezmoi edit ~/.local/share/chezmoi/run_onchange_before_install-packages-darwin.sh.tmpl
+- Homebrew casks and Mac App Store applications: `nixos-config/hosts/Rafaels-MacBook-Air/`
+- Nix-provided CLI tools: `nixos-config/home/rafael/darwin.nix`
 
-# Apply changes (will run brew bundle automatically)
-chezmoi apply
-```
+Chezmoi continues to own cross-platform dotfiles and Linux package bootstrap. Run `chezmoi apply --dry-run --verbose` to inspect dotfile changes without applying them.
 
 ## Learn more
 
