@@ -1,0 +1,108 @@
+[user]
+	name = Rafael Mendonça França
+	useConfigOnly = true
+[core]
+	excludesfile = ~/.config/git/ignore
+	attributesfile = ~/.config/git/attributes
+	commitGraph = true
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	grep = always
+[alias]
+	a = add
+	b = branch
+	ba = branch -a
+	c = commit -v
+	ca = commit -v -a
+	cam = commit --amend
+	co = checkout
+	cp = cherry-pick
+	d = diff
+	dc = diff --cached
+	dm = diff main
+	dw = diff --word-diff=color
+	f = fetch
+	fix = commit --amend -C HEAD
+	l = log --graph
+	m = merge --no-edit
+	mf = merge --ff-only
+	mt = mergetool
+	p = push
+	pu = push -u
+	pl = pull
+	r = reset
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --ignore
+	rh = reset --hard
+	rmb = !sh -c 'git branch -d $1 && git push origin :$1' -
+	s = status -s
+	sa = stash apply
+	sp = stash pop
+	sq = rebase --interactive origin/main --autosquash
+	ss = stash
+	un = reset HEAD
+	up = rebase origin/main
+	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
+	branch-cleanup = ! git branch --merged | grep -v \"*\" | xargs git branch -d
+[push]
+	default = current
+[merge]
+	tool = code
+	ff = false
+	conflictstyle = merge
+[apply]
+	whitespace = nowarn
+[format]
+	pretty = %C(yellow)%h%Cblue%d%Creset %s %C(green) %an, %ar%Creset
+[branch]
+	autosetuprebase = always
+[help]
+	autocorrect = -1
+[log]
+	date = local
+[grep]
+	lineNumber = true
+[hub]
+	protocol = git
+[mergetool]
+	keepBackup = false
+	keepTemporaries = false
+[pull]
+	rebase = true
+[merge "bundlelock"]
+	name = bundle lock
+	driver = bundle lock
+[merge "railsschema"]
+	name = newer Rails schema version
+	driver = "ruby -e '\n\
+		system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
+		b = File.read(%(%A))\n\
+		b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n=+\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n>+ .*/) do\n\
+		  %(ActiveRecord::Schema.define(:version => #{[$1, $2].max}) do)\n\
+		end\n\
+		File.open(%(%A), %(w)) {|f| f.write(b)}\n\
+		exit 1 if b.include?(%(<)*%L)'"
+[github]
+	user = rafaelfranca
+[diff]
+	algorithm = patience
+[protocol]
+	version = 2
+[gc]
+	writeCommitGraph = true
+[mergetool "code"]
+	cmd = eval \"$EDITOR\" --merge $REMOTE $LOCAL $BASE $MERGED
+	trustExitCode = true
+[gpg]
+	format = openpgp
+[commit]
+	gpgsign = true
+[feature]
+        manyFiles = true
+[advice]
+	mergeConflict = false
